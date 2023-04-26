@@ -29,14 +29,20 @@ public class SungJukV6DAOImpl implements SungJukV4DAO {
 
     @Override
     public int insertSungJuk(SungJukVO sj) {
-        // 매개변수 정의
-        Object params = new Object[] {
-                sj.getName(), sj.getKor(), sj.getEng(),
-                sj.getMat(), sj.getTot(), sj.getAvg(), sj.getGrd()
-        };
+        int cnt = -1;
 
-
-        return jdbcTemplate.update(insertSQL, params);
+        try {
+            // 매개변수 정의
+            Object[] params = new Object[]{
+                    sj.getName(), sj.getKor(), sj.getEng(),
+                    sj.getMat(), sj.getTot(), sj.getAvg(), sj.getGrd()
+            };
+            cnt = jdbcTemplate.update(insertSQL, params);
+        } catch (Exception ex) {
+            System.out.println("insertSungJuk 오류!!");
+            ex.printStackTrace();
+        }
+        return cnt;
     }
 
     @Override

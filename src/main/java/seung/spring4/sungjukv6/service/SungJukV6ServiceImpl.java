@@ -22,31 +22,34 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {
     }
 
 
-    public void removeSungJuk() {
-
-
-    }
-
-    public void modifySungJuk() {
+    public boolean removeSungJuk(int sjno) {
+        return false;
 
     }
 
-    public void readOneSungJuk() {
+    public boolean modifySungJuk(SungJukVO sj) {
+        return false;
+    }
 
+    public SungJukVO readOneSungJuk(int sjno) {
+        return null;
     }
 
     // 성적 리스트 받아옴
     public List<SungJukVO> readSungJuk() {
-
         return sjdao.selectSungJuk();
     }
 
-    // 성적 데이터 추가
-    public void newSungJuk() {
+    // 성적 데이터 저장
+    public boolean newSungJuk(SungJukVO sj) {
+        boolean result = false;
 
+        this.computeSungJuk(sj);
+        if (sjdao.insertSungJuk(sj) > 0) result = true;
+        return result;
     }
 
-
+    // 성적 데이터 처리
     public void computeSungJuk(SungJukVO sj) {
         sj.setTot(sj.getKor() + sj.getEng() + sj.getMat());
         sj.setAvg((double) sj.getTot() / 3);

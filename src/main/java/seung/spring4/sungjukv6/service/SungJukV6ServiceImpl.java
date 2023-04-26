@@ -1,8 +1,11 @@
 package seung.spring4.sungjukv6.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import seung.spring4.sungjukv6.dao.SungJukV4DAO;
+import seung.spring4.sungjukv6.dao.SungJukV6DAOImpl;
 import seung.spring4.sungjukv6.model.SungJukVO;
 
 import java.util.List;
@@ -10,14 +13,12 @@ import java.util.Scanner;
 
 @Service("sjsrv")
 public class SungJukV6ServiceImpl implements SungJukV6Service {
-    private Scanner sc = null;
-    private List<SungJukVO> sjs = null;
     private SungJukV4DAO sjdao = null;
+    private static final org.apache.logging.log4j.Logger Logger = LogManager.getLogger(SungJukV6DAOImpl.class);
 
 
     @Autowired
     public SungJukV6ServiceImpl(SungJukV4DAO sjdao) {
-        sc = new Scanner(System.in);
         this.sjdao = sjdao;
     }
 
@@ -45,6 +46,8 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {
         boolean result = false;
 
         this.computeSungJuk(sj);
+        Logger.info(sj);
+
         if (sjdao.insertSungJuk(sj) > 0) result = true;
         return result;
     }

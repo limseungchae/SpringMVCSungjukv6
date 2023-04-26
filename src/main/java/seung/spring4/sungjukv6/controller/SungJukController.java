@@ -3,10 +3,7 @@ package seung.spring4.sungjukv6.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import seung.spring4.sungjukv6.model.SungJukVO;
 import seung.spring4.sungjukv6.service.SungJukV6Service;
@@ -52,6 +49,22 @@ public class SungJukController {
             view = "sunghukok";
         }
 
+        mv.setViewName(view);
+
+        return mv;
+    }
+
+    // 성적 본문조회 처리
+    @GetMapping("/view")
+    public ModelAndView view(@RequestParam int sjno) {
+        ModelAndView mv = new ModelAndView();
+        String view = "sungjukfail";
+
+        SungJukVO sj = sjsrv.readOneSungJuk(sjno);
+        if (sj != null) {
+            mv.addObject("sj", sj);
+            view = "sungjukview";
+        }
         mv.setViewName(view);
 
         return mv;

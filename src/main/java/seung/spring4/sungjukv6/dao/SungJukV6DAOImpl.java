@@ -77,9 +77,7 @@ public class SungJukV6DAOImpl implements SungJukV4DAO {
         Object[] param = new Object[] { sjno };
         RowMapper<SungJukVO> mapper = new SungJukOneMapper();
 
-
         SungJukVO sj = jdbcTemplate.queryForObject(selectOneSQL, mapper, param);
-
 
         return sj;
     }
@@ -107,10 +105,10 @@ public class SungJukV6DAOImpl implements SungJukV4DAO {
 
     @Override
     public int deleteSungJuk(int sjno) {
-        int cnt = -1;
+        Object[] param = new Object[] { sjno };
 
 
-        return cnt;
+        return jdbcTemplate.update(deleteSQL, param);
     }
 
 

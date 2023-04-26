@@ -5,7 +5,7 @@
     <title>성적 조회</title>
 </head>
 <body>
-    <title>성적 조회</title>
+    <h1>성적 조회</h1>
 
     <ul>
         <li>${sj.sjno}</li>
@@ -16,7 +16,7 @@
         <li>${sj.tot}</li>
         <li>${sj.avg}</li>
         <li>${sj.grd}</li>
-        <li>${sj.redate}</li>
+        <li>${sj.regdate}</li>
     </ul>
 
     <p><a href="/modify?sjno=${sj.sjno}">수정하기</a></p>

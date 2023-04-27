@@ -83,9 +83,16 @@ public class SungJukController {
     }
 
     @PostMapping("/modify")
-    public ModelAndView modifyok() {
+    public ModelAndView modifyok(SungJukVO sj) {
+        String view = "sungjukfail";
+        ModelAndView mv = new ModelAndView();
 
-        return null;
+        if (sjsrv.modifySungJuk(sj))
+            view = "redirect:/view?sjno=" + sj.getSjno();
+
+        mv.setViewName(view);
+
+        return mv;
     }
 
 

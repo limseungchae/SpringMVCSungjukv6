@@ -1,7 +1,6 @@
 package seung.spring4.sungjukv6.service;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import seung.spring4.sungjukv6.dao.SungJukV4DAO;
@@ -9,7 +8,6 @@ import seung.spring4.sungjukv6.dao.SungJukV6DAOImpl;
 import seung.spring4.sungjukv6.model.SungJukVO;
 
 import java.util.List;
-import java.util.Scanner;
 
 @Service("sjsrv")
 public class SungJukV6ServiceImpl implements SungJukV6Service {
@@ -31,7 +29,10 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {
     }
 
     public boolean modifySungJuk(SungJukVO sj) {
-        return false;
+        boolean result = false;
+        if (sjdao.updateSungJuk(sj) > 0) result = true;
+
+        return result;
     }
 
     public SungJukVO readOneSungJuk(int sjno) {

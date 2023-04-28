@@ -22,11 +22,11 @@ public class SungJukV6DAOImpl implements SungJukV4DAO {
     private JdbcTemplate jdbcTemplate;
 
     // jdbc.properties 에 정의한 SQL 가져오기
-    @Value("#{jdbc['insertSQL']}") private String insertSQL;
-    @Value("#{jdbc['selectSQL']}") private String selectSQL;
-    @Value("#{jdbc['selectOneSQL']}") private String selectOneSQL;
-    @Value("#{jdbc['updateSQL']}") private String updateSQL;
-    @Value("#{jdbc['deleteSQL']}") private String deleteSQL;
+    @Value("#{sql['insertSQL']}") private String insertSQL;
+    @Value("#{sql['selectSQL']}") private String selectSQL;
+    @Value("#{sql['selectOneSQL']}") private String selectOneSQL;
+    @Value("#{sql['updateSQL']}") private String updateSQL;
+    @Value("#{sql['deleteSQL']}") private String deleteSQL;
 
     @Autowired
     public SungJukV6DAOImpl(JdbcTemplate jdbcTemplate) {

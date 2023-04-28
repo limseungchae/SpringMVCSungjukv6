@@ -8,10 +8,16 @@
     <Loggers>
 
         <Logger name="org.springframework" level="info"/>
+
+        <Logger name="org.springframework.jdbc.core" level="trace" />
+
+        <Logger name="org.mybatis.*" level="debug" />
+
         <Logger name="seung.spring4.sungjukv6" level="info"/>
 
-        <Root level="error">
+        <Root level="debug">
             <AppenderRef ref="Console"/>
         </Root>
+
     </Loggers>
 </Configuration>

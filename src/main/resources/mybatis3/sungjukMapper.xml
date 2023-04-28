@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sungjuk">
+
+    <select id="selectsql" statementType="PREPARED"
+            resultType="seung.spring4.sungjukv6.model.SungJukVO">
+        select sjno,name,kor,eng,mat from sungjuk order by sjno</select>
+
+    <select id="selectonesql" statementType="PREPARED" parameterType="int"
+            resultType="seung.spring4.sungjukv6.model.SungJukVO">
+        select * from sungjuk where sjno = #{sjno}</select>
+
+    <insert id="insertsql" statementType="PREPARED"
+            parameterType="seung.spring4.sungjukv6.model.SungJukVO">
+        insert into sungjuk (name,kor,eng,mat,tot,avg,grd)
+        values (#{name},#{kor},#{eng},#{mat},#{tot},#{avg},#{grd})</insert>
+
+    <update id="updatesql" statementType="PREPARED"
+            parameterType="seung.spring4.sungjukv6.model.SungJukVO">
+        update sungjuk set kor = #{kor}, eng = #{eng}, mat = #{mat},
+                           tot = #{tot}, avg = #{avg}, grd = #{grd} where sjno = #{sjno}
+    </update>
+
+    <delete id="deletesql" statementType="PREPARED" parameterType="int">
+        delete from sungjuk where sjno = #{sjno}</delete>
+
+</mapper>

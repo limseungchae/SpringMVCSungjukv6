@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import seung.spring4.sungjukv6.dao.SungJukV4DAO;
-import seung.spring4.sungjukv6.dao.SungJukV6DAOImpl;
 import seung.spring4.sungjukv6.model.SungJukVO;
 
 import java.util.List;
@@ -63,10 +62,14 @@ public class SungJukV6DAOTest {
     public void test4() {
         System.out.println(">> Test 4 시작 <<");
 
-        SungJukVO sj = new SungJukVO(null, 11,22,33);
+        SungJukVO sj = new SungJukVO("이름", 11,22,33);
         sj.setSjno(4); sj.setTot(0); sj.setAvg(0.0); sj.setGrd('ㅋ');
 
         assertEquals(1, sjdao.updateSungJuk(sj));
+
+        int sjno = 24;
+        System.out.println(sjdao.selectOneSungJuk(sjno));
+        System.out.println(sjdao.selectSungJuk());
 
     }
 
